@@ -54,41 +54,34 @@ fi
 echo "==> Caching sudo credentials (you will be prompted once)"
 sudo -v
 
-# ---------- Homebrew ----------
+# ---------- Homebrew (nix-demo isolated prefix; do not touch host /opt/homebrew) ----------
 
-echo "==> Installing Homebrew"
-if [ ! -x /opt/homebrew/bin/brew ]; then
-  NONINTERACTIVE=1 /bin/bash -c \
-    "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+BREW_PREFIX="$HOME/homebrew"
+
+echo "==> Installing Homebrew at $BREW_PREFIX"
+if [ ! -x "$BREW_PREFIX/bin/brew" ]; then
+  mkdir -p "$BREW_PREFIX"
+  curl -fsSL https://github.com/Homebrew/brew/tarball/master \
+    | tar xz --strip 1 -C "$BREW_PREFIX"
 fi
 
-# If /opt/homebrew was installed previously by a different admin user
-# (e.g., naitokosuke on a shared machine), /opt/homebrew is not writable by
-# nix-demo. Switch to admin-group shared ownership so both admin users can use
-# brew. chown :admin + chmod g+ws gives group write and inherits the admin
-# group for any newly created files.
-if [ "$(stat -f '%u' /opt/homebrew)" != "$(id -u)" ]; then
-  echo "==> /opt/homebrew owned by another user; switching to admin-group shared ownership"
-  sudo chown -R :admin /opt/homebrew
-  sudo chmod -R g+ws /opt/homebrew
-fi
-
-BREW_SHELLENV='eval "$(/opt/homebrew/bin/brew shellenv)"'
+BREW_SHELLENV="eval \"\$($BREW_PREFIX/bin/brew shellenv)\""
 touch "$HOME/.zprofile"
 if ! grep -qF "$BREW_SHELLENV" "$HOME/.zprofile"; then
   echo "$BREW_SHELLENV" >> "$HOME/.zprofile"
 fi
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$("$BREW_PREFIX"/bin/brew shellenv)"
 
-# ---------- brew formulae ----------
+# ---------- brew formulae (source-built at custom prefix; bottles do not apply) ----------
 
 echo "==> brew install git starship mise"
 brew install git starship mise
 
-# ---------- brew cask ----------
+# ---------- brew cask (install app to nix-demo's ~/Applications, not /Applications) ----------
 
 echo "==> brew install --cask ghostty"
-brew install --cask ghostty
+mkdir -p "$HOME/Applications"
+brew install --cask ghostty --appdir="$HOME/Applications"
 
 # ---------- rustup ----------
 

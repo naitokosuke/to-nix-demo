@@ -42,15 +42,6 @@ sudo -i -u nix-demo zsh -s < step/1/verify.sh
 
 `bash` に入ってから zsh / bash 版のコマンドを実行する
 
-期待される状態
-
-- `git`, `starship`, `mise` が `/opt/homebrew/bin/` 以下
-- `cargo`, `rustc`, `rg` が `~/.cargo/bin/` 以下
-- `mise which node` が `~/.local/share/mise/installs/node/.../bin/node` を返す
-- `~/.vite-plus/current/bin/vp` が存在する
-- `brew list` に `git`, `starship`, `mise` が含まれる
-- `brew list --cask` に `ghostty` が含まれる
-
 ## 次
 
 Phase 1 完了
