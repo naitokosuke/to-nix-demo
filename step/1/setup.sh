@@ -11,6 +11,23 @@
 #   sudo -u nix-demo -H bash -s < step/1/setup.sh
 # See step/1/setup.md for the full procedure.
 
+# Bootstrap: when invoked via `bash -s < file`, stdin is the script file. Any
+# subprocess (e.g. a hook spawned by `brew install`) that reads stdin would
+# consume the remaining script content. Slurp the rest of stdin and re-exec
+# with stdin closed so subprocesses inherit /dev/null.
+if [ -z "${_SETUP_CLEAN_STDIN:-}" ] && [ ! -t 0 ]; then
+  _SETUP_CLEAN_STDIN=1 exec bash -c "$(cat)" </dev/null
+fi
+
+# Isolate nix-demo from the host's Nix environment. This machine has
+# nix-darwin installed system-wide (e.g. /run/current-system/sw/bin has
+# rustup), but the demo premise is "a user who does not know Nix migrates to
+# Nix". Any leak from the host defeats that premise. Reset PATH to macOS
+# defaults and drop any NIX_* env vars that sudo may have passed through.
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+for _v in ${!NIX_*}; do unset "$_v"; done
+unset _v
+
 set -euo pipefail
 
 # ---------- sanity checks ----------
@@ -43,6 +60,17 @@ echo "==> Installing Homebrew"
 if [ ! -x /opt/homebrew/bin/brew ]; then
   NONINTERACTIVE=1 /bin/bash -c \
     "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# If /opt/homebrew was installed previously by a different admin user
+# (e.g., naitokosuke on a shared machine), /opt/homebrew is not writable by
+# nix-demo. Switch to admin-group shared ownership so both admin users can use
+# brew. chown :admin + chmod g+ws gives group write and inherits the admin
+# group for any newly created files.
+if [ "$(stat -f '%u' /opt/homebrew)" != "$(id -u)" ]; then
+  echo "==> /opt/homebrew owned by another user; switching to admin-group shared ownership"
+  sudo chown -R :admin /opt/homebrew
+  sudo chmod -R g+ws /opt/homebrew
 fi
 
 BREW_SHELLENV='eval "$(/opt/homebrew/bin/brew shellenv)"'
