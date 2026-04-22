@@ -12,7 +12,7 @@
 ```bash
 sudo cp step/4/home.nix /Users/nix-demo/.config/home-manager/home.nix
 sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager'
+sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager |& nom'
 sudo -i -u nix-demo zsh -c 'brew uninstall git'
 ```
 
@@ -21,7 +21,7 @@ sudo -i -u nix-demo zsh -c 'brew uninstall git'
 ```nushell
 sudo cp step/4/home.nix /Users/nix-demo/.config/home-manager/home.nix
 sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager'
+sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager |& nom'
 sudo -i -u nix-demo zsh -c 'brew uninstall git'
 ```
 

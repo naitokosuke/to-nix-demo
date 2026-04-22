@@ -12,7 +12,7 @@
 ```bash
 sudo cp step/5/home.nix /Users/nix-demo/.config/home-manager/home.nix
 sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager -b hm-backup'
+sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager -b hm-backup |& nom'
 sudo -i -u nix-demo zsh -c 'brew uninstall starship'
 ```
 
@@ -21,7 +21,7 @@ sudo -i -u nix-demo zsh -c 'brew uninstall starship'
 ```nushell
 sudo cp step/5/home.nix /Users/nix-demo/.config/home-manager/home.nix
 sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager -b hm-backup'
+sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager -b hm-backup |& nom'
 sudo -i -u nix-demo zsh -c 'brew uninstall starship'
 ```
 
