@@ -13,6 +13,7 @@
 sudo mkdir -p /Users/nix-demo/demo-project
 sudo cp step/7/flake.nix /Users/nix-demo/demo-project/flake.nix
 sudo chown -R nix-demo:staff /Users/nix-demo/demo-project
+sudo -i -u nix-demo zsh -c 'cd ~/demo-project && git init && git add flake.nix'
 sudo -i -u nix-demo zsh -c 'cd ~/demo-project && nix develop --command zsh -c "which node pnpm jq"'
 ```
 
@@ -22,6 +23,7 @@ sudo -i -u nix-demo zsh -c 'cd ~/demo-project && nix develop --command zsh -c "w
 sudo mkdir -p /Users/nix-demo/demo-project
 sudo cp step/7/flake.nix /Users/nix-demo/demo-project/flake.nix
 sudo chown -R nix-demo:staff /Users/nix-demo/demo-project
+sudo -i -u nix-demo zsh -c 'cd ~/demo-project && git init && git add flake.nix'
 sudo -i -u nix-demo zsh -c 'cd ~/demo-project && nix develop --command zsh -c "which node pnpm jq"'
 ```
 
