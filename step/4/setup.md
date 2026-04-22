@@ -3,6 +3,7 @@
 ## 前提
 
 - ステップ 3 が完了している
+- nix-demo ユーザーで macOS にログイン済み
 - 書籍 Part 2 Ch.11–13 を参照
 
 ## 手順
@@ -10,19 +11,17 @@
 ### zsh / bash
 
 ```bash
-sudo cp step/4/home.nix /Users/nix-demo/.config/home-manager/home.nix
-sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager |& nom'
-sudo -i -u nix-demo zsh -c 'brew uninstall git'
+cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/4/home.nix ~/.config/home-manager/home.nix
+nix run home-manager/master -- switch --flake ~/.config/home-manager |& nom
+brew uninstall git
 ```
 
 ### nushell
 
 ```nushell
-sudo cp step/4/home.nix /Users/nix-demo/.config/home-manager/home.nix
-sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager |& nom'
-sudo -i -u nix-demo zsh -c 'brew uninstall git'
+cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/4/home.nix ~/.config/home-manager/home.nix
+nix run home-manager/master -- switch --flake ~/.config/home-manager |& nom
+brew uninstall git
 ```
 
 ## 動作確認
@@ -30,13 +29,13 @@ sudo -i -u nix-demo zsh -c 'brew uninstall git'
 ### zsh / bash
 
 ```bash
-sudo -i -u nix-demo zsh -c 'which git && git --version'
+which git && git --version
 ```
 
 ### nushell
 
 ```nushell
-sudo -i -u nix-demo zsh -c 'which git && git --version'
+which git && git --version
 ```
 
 ## 次

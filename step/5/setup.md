@@ -3,6 +3,7 @@
 ## 前提
 
 - ステップ 4 が完了している
+- nix-demo ユーザーで macOS にログイン済み
 - 書籍 Part 2 Ch.11 を参照
 
 ## 手順
@@ -10,19 +11,17 @@
 ### zsh / bash
 
 ```bash
-sudo cp step/5/home.nix /Users/nix-demo/.config/home-manager/home.nix
-sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager -b hm-backup |& nom'
-sudo -i -u nix-demo zsh -c 'brew uninstall starship'
+cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/5/home.nix ~/.config/home-manager/home.nix
+nix run home-manager/master -- switch --flake ~/.config/home-manager -b hm-backup |& nom
+brew uninstall starship
 ```
 
 ### nushell
 
 ```nushell
-sudo cp step/5/home.nix /Users/nix-demo/.config/home-manager/home.nix
-sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager -b hm-backup |& nom'
-sudo -i -u nix-demo zsh -c 'brew uninstall starship'
+cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/5/home.nix ~/.config/home-manager/home.nix
+nix run home-manager/master -- switch --flake ~/.config/home-manager -b hm-backup |& nom
+brew uninstall starship
 ```
 
 ## 動作確認
@@ -30,13 +29,13 @@ sudo -i -u nix-demo zsh -c 'brew uninstall starship'
 ### zsh / bash
 
 ```bash
-sudo -i -u nix-demo zsh -c 'which starship && starship --version'
+which starship && starship --version
 ```
 
 ### nushell
 
 ```nushell
-sudo -i -u nix-demo zsh -c 'which starship && starship --version'
+which starship && starship --version
 ```
 
 ## 次

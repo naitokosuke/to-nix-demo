@@ -1,42 +1,43 @@
-# ステップ 3 — Home Manager で ripgrep / mise / rustup を Nix-store 化
+# ステップ 3 — Home Manager で ripgrep / mise / rustup / nom を Nix-store 化
 
 ## 前提
 
 - ステップ 2 が完了している
-- 書籍 Part 2 Ch.9–10 を参照
+- nix-demo ユーザーで macOS にログイン済み
+- 書籍 Part 2 Ch.9–10 / Part 5 Ch.30 付近を参照
 
 ## 手順
 
 ### zsh / bash
 
 ```bash
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- init --switch'
-sudo cp step/3/home.nix /Users/nix-demo/.config/home-manager/home.nix
-sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager'
+nix run home-manager/master -- init --switch
+cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/3/home.nix ~/.config/home-manager/home.nix
+nix run home-manager/master -- switch --flake ~/.config/home-manager |& nix run nixpkgs#nix-output-monitor
 ```
 
 ### nushell
 
 ```nushell
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- init --switch'
-sudo cp step/3/home.nix /Users/nix-demo/.config/home-manager/home.nix
-sudo chown nix-demo:staff /Users/nix-demo/.config/home-manager/home.nix
-sudo -i -u nix-demo zsh -c 'nix run home-manager/master -- switch --flake /Users/nix-demo/.config/home-manager'
+nix run home-manager/master -- init --switch
+cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/3/home.nix ~/.config/home-manager/home.nix
+nix run home-manager/master -- switch --flake ~/.config/home-manager |& nix run nixpkgs#nix-output-monitor
 ```
+
+次回以降の switch は `|& nom` で OK。
 
 ## 動作確認
 
 ### zsh / bash
 
 ```bash
-sudo -i -u nix-demo zsh -c 'which rg mise rustup'
+which rg mise rustup nom
 ```
 
 ### nushell
 
 ```nushell
-sudo -i -u nix-demo zsh -c 'which rg mise rustup'
+which rg mise rustup nom
 ```
 
 ## 次
