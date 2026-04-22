@@ -14,12 +14,16 @@ sudo sysadminctl -addUser nix-demo \
   -fullName "Nix Demo" \
   -password demo \
   -admin
+
+sudo sysadminctl interactive -secureTokenOn nix-demo -password demo
 ```
 
 ### nushell
 
 ```nushell
 sudo sysadminctl -addUser nix-demo -fullName "Nix Demo" -password demo -admin
+
+sudo sysadminctl interactive -secureTokenOn nix-demo -password demo
 ```
 
 ## 動作確認
@@ -30,6 +34,7 @@ sudo sysadminctl -addUser nix-demo -fullName "Nix Demo" -password demo -admin
 id nix-demo
 ls /Users/nix-demo
 groups nix-demo | tr ' ' '\n' | grep -q admin && echo "admin: OK" || echo "admin: MISSING"
+sudo sysadminctl -secureTokenStatus nix-demo
 ```
 
 ### nushell
@@ -38,6 +43,7 @@ groups nix-demo | tr ' ' '\n' | grep -q admin && echo "admin: OK" || echo "admin
 id nix-demo
 ls /Users/nix-demo
 if (groups nix-demo | str contains "admin") { "admin: OK" } else { "admin: MISSING" }
+sudo sysadminctl -secureTokenStatus nix-demo
 ```
 
 ## 次
