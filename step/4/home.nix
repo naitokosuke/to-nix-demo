@@ -9,6 +9,7 @@
     ripgrep
     mise
     rustup
+    nix-output-monitor
   ];
 
   programs.git.enable = true;
