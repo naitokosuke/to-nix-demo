@@ -38,6 +38,8 @@ which starship && starship --version
 which starship && starship --version
 ```
 
+詳しい解説は [notes.md](./notes.md) を参照。
+
 ## 次
 
 ステップ 6 へ進む

@@ -10,6 +10,7 @@
     mise
     rustup
     nix-output-monitor
+    starship
   ];
 
   programs.git.enable = true;

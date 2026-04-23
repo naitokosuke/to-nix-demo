@@ -12,13 +12,19 @@
 
 ```bash
 brew uninstall mise
+brew autoremove
+brew uninstall gettext libunistring pkgconf
 ```
 
 ### nushell
 
 ```nushell
 brew uninstall mise
+brew autoremove
+brew uninstall gettext libunistring pkgconf
 ```
+
+`brew autoremove` は依存として引きずられた孤児 formula を掃除する。ただし `gettext` / `libunistring` / `pkgconf` は過去に何らかのタイミングで `on_request`（ユーザーが明示的に入れた扱い）としてマークされているため autoremove の対象外になる。`brew uses --installed` でこれらを使っている formula が無いことを確認した上で、明示的に uninstall してデモの最終状態を「cask だけ」に揃える。
 
 ## 動作確認
 
