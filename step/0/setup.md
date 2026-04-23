@@ -14,7 +14,9 @@ sudo sysadminctl -addUser nix-demo \
   -fullName "Nix Demo" \
   -password demo \
   -admin
+```
 
+```bash
 sudo sysadminctl interactive -secureTokenOn nix-demo -password demo
 ```
 
@@ -22,7 +24,9 @@ sudo sysadminctl interactive -secureTokenOn nix-demo -password demo
 
 ```nushell
 sudo sysadminctl -addUser nix-demo -fullName "Nix Demo" -password demo -admin
+```
 
+```nushell
 sudo sysadminctl interactive -secureTokenOn nix-demo -password demo
 ```
 
@@ -32,8 +36,17 @@ sudo sysadminctl interactive -secureTokenOn nix-demo -password demo
 
 ```bash
 id nix-demo
+```
+
+```bash
 ls /Users/nix-demo
+```
+
+```bash
 groups nix-demo | tr ' ' '\n' | grep -q admin && echo "admin: OK" || echo "admin: MISSING"
+```
+
+```bash
 sudo sysadminctl -secureTokenStatus nix-demo
 ```
 
@@ -41,8 +54,17 @@ sudo sysadminctl -secureTokenStatus nix-demo
 
 ```nushell
 id nix-demo
+```
+
+```nushell
 ls /Users/nix-demo
+```
+
+```nushell
 if (groups nix-demo | str contains "admin") { "admin: OK" } else { "admin: MISSING" }
+```
+
+```nushell
 sudo sysadminctl -secureTokenStatus nix-demo
 ```
 

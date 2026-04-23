@@ -13,8 +13,17 @@
 
 ```bash
 mkdir -p ~/.config/nix-darwin
+```
+
+```bash
 cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/7/flake.nix ~/.config/nix-darwin/flake.nix
+```
+
+```bash
 cd ~/.config/nix-darwin && git init && git add flake.nix
+```
+
+```bash
 nix run nix-darwin/master#darwin-rebuild -- switch --flake . |& nom
 ```
 
@@ -22,8 +31,17 @@ nix run nix-darwin/master#darwin-rebuild -- switch --flake . |& nom
 
 ```nushell
 mkdir -p ~/.config/nix-darwin
+```
+
+```nushell
 cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/7/flake.nix ~/.config/nix-darwin/flake.nix
+```
+
+```nushell
 cd ~/.config/nix-darwin; git init; git add flake.nix
+```
+
+```nushell
 nix run nix-darwin/master#darwin-rebuild -- switch --flake . |& nom
 ```
 
@@ -33,7 +51,13 @@ nix run nix-darwin/master#darwin-rebuild -- switch --flake . |& nom
 
 ```bash
 darwin-rebuild --list-generations
+```
+
+```bash
 brew list --cask
+```
+
+```bash
 ls ~/Applications/ | rg Ghostty
 ```
 
@@ -41,7 +65,13 @@ ls ~/Applications/ | rg Ghostty
 
 ```nushell
 darwin-rebuild --list-generations
+```
+
+```nushell
 brew list --cask
+```
+
+```nushell
 ls ~/Applications/ | rg Ghostty
 ```
 

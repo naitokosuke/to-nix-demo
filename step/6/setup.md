@@ -32,7 +32,13 @@ brew uninstall gettext libunistring pkgconf
 
 ```bash
 brew list
+```
+
+```bash
 brew list --cask
+```
+
+```bash
 which git starship mise rg rustup node vp
 ```
 
@@ -40,7 +46,13 @@ which git starship mise rg rustup node vp
 
 ```nushell
 brew list
+```
+
+```nushell
 brew list --cask
+```
+
+```nushell
 which git starship mise rg rustup node vp
 ```
 

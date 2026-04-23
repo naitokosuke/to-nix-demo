@@ -12,7 +12,13 @@
 
 ```bash
 cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/4/home.nix ~/.config/home-manager/home.nix
+```
+
+```bash
 nix run home-manager/master -- switch --flake ~/.config/home-manager |& nom
+```
+
+```bash
 brew uninstall git
 ```
 
@@ -20,7 +26,13 @@ brew uninstall git
 
 ```nushell
 cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/4/home.nix ~/.config/home-manager/home.nix
+```
+
+```nushell
 nix run home-manager/master -- switch --flake ~/.config/home-manager |& nom
+```
+
+```nushell
 brew uninstall git
 ```
 

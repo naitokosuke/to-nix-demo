@@ -12,7 +12,13 @@
 
 ```bash
 cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/5/home.nix ~/.config/home-manager/home.nix
+```
+
+```bash
 nix run home-manager/master -- switch --flake ~/.config/home-manager -b hm-backup |& nom
+```
+
+```bash
 brew uninstall starship
 ```
 
@@ -20,7 +26,13 @@ brew uninstall starship
 
 ```nushell
 cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/5/home.nix ~/.config/home-manager/home.nix
+```
+
+```nushell
 nix run home-manager/master -- switch --flake ~/.config/home-manager -b hm-backup |& nom
+```
+
+```nushell
 brew uninstall starship
 ```
 

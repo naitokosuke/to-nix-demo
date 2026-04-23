@@ -12,7 +12,13 @@
 
 ```bash
 nix run home-manager/master -- init --switch
+```
+
+```bash
 cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/3/home.nix ~/.config/home-manager/home.nix
+```
+
+```bash
 nix run home-manager/master -- switch --flake ~/.config/home-manager |& nix run nixpkgs#nix-output-monitor
 ```
 
@@ -20,7 +26,13 @@ nix run home-manager/master -- switch --flake ~/.config/home-manager |& nix run 
 
 ```nushell
 nix run home-manager/master -- init --switch
+```
+
+```nushell
 cp /Users/naitokosuke/src/github.com/naitokosuke/to-nix-demo/step/3/home.nix ~/.config/home-manager/home.nix
+```
+
+```nushell
 nix run home-manager/master -- switch --flake ~/.config/home-manager |& nix run nixpkgs#nix-output-monitor
 ```
 
