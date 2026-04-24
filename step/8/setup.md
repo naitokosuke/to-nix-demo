@@ -42,4 +42,4 @@ cd ~/demo-project; nix develop --command node --version
 
 ## 次
 
-デモ全工程完了
+ステップ 9 へ進む
